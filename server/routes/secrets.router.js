@@ -8,7 +8,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
   // what is the value of req.user????
   console.log('req.user:', req.user);
   // only GET from the secrets table if the secrecy level of the secret is below the user's clearance level
-  const queryText = `SELECT * FROM "secret" WHERE "secrecy_level" < $1;`
+  const queryText = `SELECT * FROM "secret" WHERE "secrecy_level" <= $1;`
 
   pool
   // feed in the query with the created queryText along with the clearance level of the logged-in user
